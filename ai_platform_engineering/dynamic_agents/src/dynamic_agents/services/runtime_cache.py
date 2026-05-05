@@ -386,6 +386,7 @@ class AgentRuntimeCache:
                         rss_current_mb = round(int(line.split()[1]) / 1024, 1)
                         break
         except (OSError, ValueError):
+            # Best-effort metric: /proc may be unavailable or unparsable in some environments.
             pass
 
         return {
